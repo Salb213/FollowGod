@@ -29,15 +29,21 @@
         <button id="start-btn">Get Started</button>
     </div>
 
-    <!-- Question Section (Hidden Initially) -->
+    <!-- Question Section -->
     <div class="container" id="question-section" style="display: none;">
-        <h2 id="question-title">Before we begin, 3 more questions...</h2>
+        <h2 id="question-title">
+            <span id="question-number">1</span> of 3
+        </h2>
+        <div class="progress-bar-container">
+            <div id="progress-bar"></div>
+        </div>
         <div id="question-content" style="opacity: 0;">
             <label id="question-label"></label>
             <select id="question-options"></select>
             <button id="next-question-btn">Next</button>
         </div>
     </div>
+
 
     <script src="script.js"></script>
 </body>
