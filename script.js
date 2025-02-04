@@ -1,9 +1,16 @@
-const religions = ["Agnostic", "Atheist", "Muslim", "Jewish", "Buddhist", "Hindu", "Catholic"];
+const religions = ["Agnostic", "Atheist", "Muslim", "Jewish", "Buddhist", "Hindu", "Catholic", "Protestant", "Mormon", "Jehovah's Witness", "Deist", "Spiritual but not religious"];
 let index = 0;
 
-// Update religion display
 function updateReligion() {
-    document.getElementById("selected-religion").textContent = religions[index];
+    const religionText = document.getElementById("selected-religion");
+    
+    // Add fade-out effect
+    religionText.style.opacity = 0;
+    
+    setTimeout(() => {
+        religionText.textContent = religions[index];
+        religionText.style.opacity = 1; // Fade-in effect
+    }, 300); 
 }
 
 // Previous religion
@@ -16,9 +23,4 @@ document.getElementById("prev").addEventListener("click", () => {
 document.getElementById("next").addEventListener("click", () => {
     index = (index + 1) % religions.length;
     updateReligion();
-});
-
-// Start button action
-document.getElementById("start-btn").addEventListener("click", () => {
-    alert(`You selected: ${religions[index]}. Let's begin!`);
 });
