@@ -1,11 +1,11 @@
-/* Reset default margin & padding */
+/* 🔹 Reset default margin & padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Full-page centering */
+/* 🔹 Full-page centering */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f8ff; /* Light blue background */
@@ -14,33 +14,37 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    text-align: center; /* Ensures all text aligns properly */
 }
 
-/* Main container */
+/* 🔹 Main container */
 .container {
     background: white;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
     width: 90%;
     max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centering text properly */
+    justify-content: center;
 }
 
-/* Title */
+/* 🔹 Title */
 h1 {
     font-size: 28px;
     color: #007bff;
     margin-bottom: 10px;
 }
 
-/* Subtitle */
+/* 🔹 Subtitle */
 p {
     font-size: 16px;
     margin-bottom: 20px;
 }
 
-/* Religion Selector */
+/* 🔹 Religion Selector (Properly Aligned) */
 .religion-selector {
     display: flex;
     align-items: center;
@@ -49,7 +53,30 @@ p {
     margin: 20px 0;
 }
 
-/* Buttons */
+/* 🔹 Religion Text - Fixed Centering */
+#selected-religion {
+    font-size: 22px;
+    font-weight: bold;
+    min-width: 160px; /* Prevents text shifting */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 🔹 Arrows (Consistent Size & Centering) */
+#prev, #next {
+    font-size: 24px;
+    padding: 12px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+/* 🔹 Buttons */
 button {
     background: #007bff;
     color: white;
@@ -59,32 +86,15 @@ button {
     cursor: pointer;
     border-radius: 8px;
     transition: 0.3s;
+    margin-top: 15px;
 }
 
 button:hover {
     background: #0056b3;
-}
-
-/* Arrows */
-#prev, #next {
-    font-size: 22px;
-    padding: 10px;
-    border-radius: 50%;
-}
-
-/* Religion selector text animation */
-#selected-religion {
-    transition: opacity 0.3s ease-in-out;
-}
-
-/* Button hover effect */
-button:hover {
     transform: scale(1.05);
-    transition: 0.2s;
 }
 
-
-/* Language Selector */
+/* 🔹 Language Selector */
 .language-selector {
     position: absolute;
     top: 10px;
@@ -98,23 +108,19 @@ select {
     font-size: 16px;
 }
 
-/* Hide elements initially */
+/* 🔹 Hide elements initially */
 #question-section {
     display: none;
     text-align: center;
 }
 
+/* 🔹 Smooth fade-in effect */
 #question-content {
     transition: opacity 0.5s ease-in-out;
 }
 
-/* Center text */
+/* 🔹 Question Title */
 h2 {
     font-size: 22px;
     margin-bottom: 15px;
-}
-
-/* Button styling */
-button {
-    margin-top: 15px;
 }
