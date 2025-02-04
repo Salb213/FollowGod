@@ -49,32 +49,34 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
     margin: 20px 0;
 }
 
-/* 🔹 Religion Text - Fixed Centering */
+/* Religion Text - Centered Correctly */
 #selected-religion {
     font-size: 22px;
     font-weight: bold;
-    min-width: 160px; /* Prevents text shifting */
-    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 45px; /* Match height with arrows */
+    min-width: 160px; /* Ensure consistency */
+    text-align: center;
 }
 
-/* 🔹 Arrows (Consistent Size & Centering) */
+/* Arrows - Uniform Size and Centering */
 #prev, #next {
-    font-size: 24px;
+    font-size: 22px;
     padding: 12px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
 }
+
 
 /* 🔹 Buttons */
 button {
