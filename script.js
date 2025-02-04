@@ -94,43 +94,63 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function nextQuestion() {
         currentQuestionIndex++;
-
+    
         if (currentQuestionIndex < questions.length) {
             const questionData = questions[currentQuestionIndex];
-
-            // Ensure elements exist before modifying them
+    
+            // Get elements
             const questionNumberEl = document.getElementById("question-number");
             const progressBarEl = document.getElementById("progress-bar");
             const questionLabelEl = document.getElementById("question-label");
             const selectEl = document.getElementById("question-options");
-
-            if (!questionNumberEl || !progressBarEl || !questionLabelEl || !selectEl) {
+            const loadingBarContainer = document.querySelector(".loading-bar-container");
+            const loadingBar = document.getElementById("loading-bar");
+    
+            if (!questionNumberEl || !progressBarEl || !questionLabelEl || !selectEl || !loadingBarContainer || !loadingBar) {
                 console.error("One or more question elements are missing in the HTML.");
                 return;
             }
-
-            // Update question number
-            questionNumberEl.textContent = `${translations[currentLang].questionPrefix} ${currentQuestionIndex + 1} of ${questions.length}`;
-
-            // Update progress bar
-            progressBarEl.style.width = ((currentQuestionIndex + 1) / questions.length) * 100 + "%";
-
-            // Update text and options
-            questionLabelEl.textContent = questionData.text;
-            selectEl.innerHTML = "";
-            questionData.options.forEach(option => {
-                const optionElement = document.createElement("option");
-                optionElement.value = option.value;
-                optionElement.textContent = option.label;
-                selectEl.appendChild(optionElement);
-            });
-
-            // Fade in question
-            document.getElementById("question-content").style.opacity = "1";
+    
+            // Show loading bar
+            loadingBarContainer.style.display = "block";
+            loadingBar.style.width = "0%";
+    
+            // Start filling progress bar
+            setTimeout(() => {
+                loadingBar.style.width = "100%";
+            }, 100);
+    
+            // Hide the current question content
+            document.getElementById("question-content").style.opacity = "0";
+    
+            setTimeout(() => {
+                // Hide loading bar after transition
+                loadingBarContainer.style.display = "none";
+    
+                // Update question number
+                questionNumberEl.textContent = `${translations[currentLang].questionPrefix} ${currentQuestionIndex + 1} of ${questions.length}`;
+    
+                // Update progress bar
+                progressBarEl.style.width = ((currentQuestionIndex + 1) / questions.length) * 100 + "%";
+    
+                // Update text and options
+                questionLabelEl.textContent = questionData.text;
+                selectEl.innerHTML = "";
+                questionData.options.forEach(option => {
+                    const optionElement = document.createElement("option");
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.label;
+                    selectEl.appendChild(optionElement);
+                });
+    
+                // Fade in next question
+                document.getElementById("question-content").style.opacity = "1";
+            }, 1000); // Matches progress bar animation duration
         } else {
             window.location.href = "guide.html";
         }
     }
+    
 
     document.getElementById("next-question-btn").addEventListener("click", () => {
         const selectedValue = document.getElementById("question-options").value;
