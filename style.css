@@ -44,37 +44,40 @@ p {
     margin-bottom: 20px;
 }
 
-/* 🔹 Religion Selector (Properly Aligned) */
+/* Religion Selector - Ensuring Perfect Vertical Alignment */
 .religion-selector {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
     margin: 20px 0;
+    height: 50px; /* Make sure the container has enough height */
 }
 
-/* Religion Text - Centered Correctly */
+/* Religion Text - Now Perfectly Centered */
 #selected-religion {
     font-size: 22px;
     font-weight: bold;
+    min-width: 160px; /* Ensures text remains consistent */
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 45px; /* Match height with arrows */
-    min-width: 160px; /* Ensure consistency */
-    text-align: center;
+    height: 45px; /* Same height as arrows */
+    line-height: 45px; /* Ensures text is vertically centered */
 }
 
-/* Arrows - Uniform Size and Centering */
+/* Arrows - Ensuring Proper Alignment */
 #prev, #next {
-    font-size: 22px;
-    padding: 12px;
+    font-size: 24px;
+    padding: 10px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 45px;
     height: 45px;
+    line-height: 45px; /* Forces proper centering */
 }
 
 
