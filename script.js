@@ -58,3 +58,84 @@ document.getElementById("next").addEventListener("click", () => {
 
 // Initialize with default language
 updateLanguage();
+
+const questions = [
+    {
+        text: "How strongly do you hold your belief?",
+        options: [
+            { value: "strong", label: "Strong Believer" },
+            { value: "moderate", label: "Moderate Believer" },
+            { value: "open", label: "Open-Minded" },
+            { value: "questioning", label: "Questioning/Doubting" }
+        ]
+    },
+    {
+        text: "What are you most curious about?",
+        options: [
+            { value: "history", label: "History" },
+            { value: "philosophy", label: "Philosophy" },
+            { value: "science", label: "Science" },
+            { value: "personal", label: "Personal Fulfillment" }
+        ]
+    },
+    {
+        text: "How much do you know about Christianity?",
+        options: [
+            { value: "beginner", label: "Beginner (Who was Jesus?)" },
+            { value: "intermediate", label: "Intermediate (I know some basics)" },
+            { value: "advanced", label: "Advanced (I'm familiar with deep theology)" }
+        ]
+    }
+];
+
+let currentQuestionIndex = -1;
+const userResponses = {};
+
+// Handle "Get Started" button click
+document.getElementById("start-btn").addEventListener("click", () => {
+    document.getElementById("main-section").style.display = "none";
+    document.getElementById("question-section").style.display = "block";
+
+    setTimeout(() => {
+        document.getElementById("question-title").style.opacity = 0;
+        setTimeout(() => {
+            nextQuestion();
+        }, 500);
+    }, 1500);
+});
+
+// Load next question with fade effect
+function nextQuestion() {
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex < questions.length) {
+        const questionData = questions[currentQuestionIndex];
+
+        // Update text and options
+        document.getElementById("question-label").textContent = questionData.text;
+        const select = document.getElementById("question-options");
+        select.innerHTML = "";
+        questionData.options.forEach(option => {
+            const optionElement = document.createElement("option");
+            optionElement.value = option.value;
+            optionElement.textContent = option.label;
+            select.appendChild(optionElement);
+        });
+
+        // Fade in question
+        document.getElementById("question-content").style.opacity = 1;
+    } else {
+        // All questions answered, redirect to guide
+        window.location.href = "guide.html";
+    }
+}
+
+// Store user response and move to next question
+document.getElementById("next-question-btn").addEventListener("click", () => {
+    const selectedValue = document.getElementById("question-options").value;
+    userResponses[questions[currentQuestionIndex].text] = selectedValue;
+
+    // Fade out current question before loading next one
+    document.getElementById("question-content").style.opacity = 0;
+    setTimeout(nextQuestion, 500);
+});
