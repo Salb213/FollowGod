@@ -104,12 +104,18 @@ document.getElementById("start-btn").addEventListener("click", () => {
     }, 1500);
 });
 
-// Load next question with fade effect
 function nextQuestion() {
     currentQuestionIndex++;
 
     if (currentQuestionIndex < questions.length) {
         const questionData = questions[currentQuestionIndex];
+
+        // Update question number
+        document.getElementById("question-number").textContent = currentQuestionIndex + 1;
+
+        // Update progress bar
+        const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+        document.getElementById("progress-bar").style.width = progress + "%";
 
         // Update text and options
         document.getElementById("question-label").textContent = questionData.text;
@@ -129,6 +135,7 @@ function nextQuestion() {
         window.location.href = "guide.html";
     }
 }
+
 
 // Store user response and move to next question
 document.getElementById("next-question-btn").addEventListener("click", () => {
