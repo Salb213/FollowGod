@@ -71,3 +71,14 @@ button:hover {
     padding: 10px;
     border-radius: 50%;
 }
+
+/* Religion selector text animation */
+#selected-religion {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Button hover effect */
+button:hover {
+    transform: scale(1.05);
+    transition: 0.2s;
+}
