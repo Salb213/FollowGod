@@ -8,17 +8,20 @@ const translations = {
     en: {
         title: "Follow God",
         subtitle: "Choose your current religion or belief system.",
-        start: "Get Started"
+        start: "Get Started",
+        questionPrefix: "Question"
     },
     de: {
         title: "Folge Gott",
         subtitle: "Wähle deine aktuelle Religion oder Weltanschauung.",
-        start: "Loslegen"
+        start: "Loslegen",
+        questionPrefix: "Frage"
     },
     pl: {
         title: "Podążaj za Bogiem",
         subtitle: "Wybierz swoją obecną religię lub światopogląd.",
-        start: "Zacznij"
+        start: "Zacznij",
+        questionPrefix: "Pytanie"
     }
 };
 
@@ -97,11 +100,9 @@ document.getElementById("start-btn").addEventListener("click", () => {
     document.getElementById("question-section").style.display = "block";
 
     setTimeout(() => {
-        document.getElementById("question-title").style.opacity = 0;
-        setTimeout(() => {
-            nextQuestion();
-        }, 500);
-    }, 1500);
+        document.getElementById("question-title").style.opacity = 1;
+        nextQuestion();
+    }, 1000);
 });
 
 function nextQuestion() {
@@ -111,7 +112,7 @@ function nextQuestion() {
         const questionData = questions[currentQuestionIndex];
 
         // Update question number
-        document.getElementById("question-number").textContent = currentQuestionIndex + 1;
+        document.getElementById("question-number").textContent = `${translations[currentLang].questionPrefix} ${currentQuestionIndex + 1} of ${questions.length}`;
 
         // Update progress bar
         const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
@@ -129,13 +130,12 @@ function nextQuestion() {
         });
 
         // Fade in question
-        document.getElementById("question-content").style.opacity = 1;
+        document.getElementById("question-content").style.opacity = "1";
     } else {
         // All questions answered, redirect to guide
         window.location.href = "guide.html";
     }
 }
-
 
 // Store user response and move to next question
 document.getElementById("next-question-btn").addEventListener("click", () => {
@@ -143,6 +143,6 @@ document.getElementById("next-question-btn").addEventListener("click", () => {
     userResponses[questions[currentQuestionIndex].text] = selectedValue;
 
     // Fade out current question before loading next one
-    document.getElementById("question-content").style.opacity = 0;
+    document.getElementById("question-content").style.opacity = "0";
     setTimeout(nextQuestion, 500);
 });
